@@ -1,0 +1,31 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1358px;
+  width: 100%;
+  max-height: 20px;
+  height: 100%;
+  background-color: none;
+  border-radius: 12px;
+  padding: 0 0 24px;
+  margin: 85px 0 20px;
+}
+
+.footer__text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0;
+}
+
+.footer__year {
+  margin: 0;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  flex-shrink: 0;
+  min-width: fit-content;
+  padding: 0 42px 0;
+
+}
