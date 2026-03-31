@@ -11,53 +11,53 @@ export const weatherOptions = [
   },
   {
     day: true,
-    condition: "Rain",
+    condition: "rain",
     url: new URL("../assets/day/Rain.png", import.meta.url).href,
   },
   {
     day: true,
-    condition: "Fog",
+    condition: "fog",
     url: new URL("../assets/day/Fog.png", import.meta.url).href,
   },
   {
     day: true,
-    condition: "Snow",
+    condition: "snow",
     url: new URL("../assets/day/Snow.png", import.meta.url).href,
   },
   {
     day: true,
-    condition: "Storm",
+    condition: "storm",
     url: new URL("../assets/day/Storm.png", import.meta.url).href,
   },
   {
-    day: true,
+    day: false,
     condition: "clear",
     url: new URL("../assets/night/clear.png", import.meta.url).href,
   },
   {
-    day: true,
-    condition: "Cloudy",
-    url: new URL("../assets/night/Cloudy-night.png", import.meta.url).href,
+    day: false,
+    condition: "cloudy",
+    url: new URL("../assets/night/cloudy-night.png", import.meta.url).href,
   },
 { 
-    day: true,
-    condition: "Rain",
-    url: new URL("../assets/night/Rain-night.png", import.meta.url).href,
+    day: false,
+    condition: "rain",
+    url: new URL("../assets/night/rain-night.png", import.meta.url).href,
   },
   {
-    day: true,
-    condition: "Snow",
-    url: new URL("../assets/night/Snow-night.png", import.meta.url).href,
+    day: false,
+    condition: "snow",
+    url: new URL("../assets/night/snow-night.png", import.meta.url).href,
   },
   {
-   day: true,
-    condition: "Fog",
-    url: new URL("../assets/night/Fog-night.png", import.meta.url).href,
+   day: false,
+    condition: "fog",
+    url: new URL("../assets/night/fog-night.png", import.meta.url).href,
   },
   {
-    day: true,
-    condition: "Storm",
-    url: new URL("../assets/night/Stormy-night.png", import.meta.url).href,
+    day: false,
+    condition: "storm",
+    url: new URL("../assets/night/stormy-night.png", import.meta.url).href,
   },
 
 ];
@@ -189,7 +189,7 @@ export const defaultClothingItems = [
 ];
 
 
-export const APIkey = "404a74077e49f7d87ac7ce9dfb3c190f";
+export const apiKey = "404a74077e49f7d87ac7ce9dfb3c190f";
 export const coordinates = {
   latitude:39.660660,
   longitude: -75.561836,

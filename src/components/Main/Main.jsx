@@ -3,6 +3,8 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 
+const filteredItems = weatherData.type ? clothingItems.filter((item) => item.weather === weatherData.type) : clothingItems;
+
 function Main({ weatherData, clothingItems, handleCardClick }) {
     return (
         <main>
@@ -12,10 +14,7 @@ function Main({ weatherData, clothingItems, handleCardClick }) {
                     Today is {weatherData.temp.F} &deg;F / You may want to wear:
                 </p>
                 <ul className="cards__list">
-                    {clothingItems.filter((item) => {
-                        return item.weather === weatherData.type;
-                    })
-                    .map((item) => {
+                    {filteredItems.map((item) => {
                         return (
                             <ItemCard 
                                 key={item._id} 
