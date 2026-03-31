@@ -3,9 +3,9 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import { defaultClothingItems } from "../../utils/constants";
 
-const filteredItems = weatherData.type ? clothingItems.filter((item) => item.weather === weatherData.type) : clothingItems;
-
 function Main({ weatherData, clothingItems, handleCardClick }) {
+
+    const filteredItems = weatherData.type ? clothingItems.filter((item) => item.weather === weatherData.type) : clothingItems;
     return (
         <main>
             <WeatherCard weatherData={weatherData} />
