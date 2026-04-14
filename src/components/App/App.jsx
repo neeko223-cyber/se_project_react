@@ -26,7 +26,7 @@ function App() {
      isDay: false,
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState([]);
+  const [selectedCard, setSelectedCard] = useState([null]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   
   const handleToggleSwitchChange = () => {
@@ -52,14 +52,15 @@ function App() {
     
     addItem(newCardData)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems((prevItems) => [data, ...clothingItems]);
+        closeActiveModal();
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error("Error adding item", err);
+      });
   };
 
   const handleDeleteItem = (card) => {
-    console.log("Deleting Card:", card);
-
     removeCard(card._id)
       .then(() => {
         setClothingItems((items) =>
@@ -132,7 +133,7 @@ function App() {
                 path="profile"
                 element={
                   <Profile
-                    onCardClick={handleCardClick}
+                    handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                 /> 
                 }
@@ -144,10 +145,8 @@ function App() {
           <AddItemModal
             onClose={closeActiveModal}
             isOpen={activeModal === "new-garment"}
-            onAddItem={(newItem) => {
-              setClothingItems((prevItems) => [newItem, ...prevItems]);
-              closeActiveModal();
-            }}
+            onAddItem={onAddItem}
+            
           />
           <ItemModal
             activeModal={activeModal}

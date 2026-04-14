@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 
 function ItemModal({ activeModal, onClose, card, onDelete }) {
-  if (!card) {
+  if (!card || !card._id) {
     return null;
   }
 
@@ -22,7 +22,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           <button
             type="button"
             className="modal__delete-btn"
-            onClick={() => onDelete(card._id)}
+            onClick={() => onDelete(card)}
           >
             Delete item
           </button>
