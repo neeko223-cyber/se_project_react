@@ -2,7 +2,7 @@
     overflow: hidden;
     width: 56px;
     height: 28px;
-    border: 2px solid black;
+    border: 2px solid #7e7e7e;
     border-radius: 20px;
     cursor: pointer;
     display: flex;
@@ -18,7 +18,7 @@
 .toggle-switch__circle {
     width: 28px;
     height: 28px;
-    background-color: black;
+    background-color: #000000;
     border-radius: 50%;
     position: absolute;
     transition: left 0.3s ease;
@@ -29,6 +29,9 @@
     position: absolute;
     color: grey;
     top: 5px;
+    font-size: 14px;
+    
+
 }
 
 .toggle-switch__text_F {
@@ -43,6 +46,10 @@
     left: 28px;
 }
 
-.toggle-switch__text_color_white {
+.toggle-switch__checkbox:not(:checked) ~ .toggle-switch__text_F {
+    color: white;
+}
+
+.toggle-switch__checkbox:checked ~ .toggle-switch__text_C {
     color: white;
 }

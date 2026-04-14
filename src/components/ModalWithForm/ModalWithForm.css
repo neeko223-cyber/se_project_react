@@ -46,6 +46,12 @@
     padding: 0;
 }
 
+.modal__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .modal__image {
     max-width: 498px;
     width: 100%;
@@ -69,6 +75,14 @@
     font-weight: 700;
     line-height: 24px;
     margin: 12px 32px 0;
+}
+
+.modal__delete-btn {
+    display: flex;
+    background: none;
+    border: none;
+    color: #ff4d00;
+    margin: 0 33px 0;
 }
 
 .modal__close {
@@ -101,6 +115,8 @@
     width: 100%;
     border: 1px solid #000;
     margin: 8px 0 0;
+    padding: 8px;
+    height: 24px;
 }
 
 .modal__radio-buttons {
