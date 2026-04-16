@@ -26,7 +26,7 @@ function App() {
      isDay: false,
   });
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState([null]);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   
   const handleToggleSwitchChange = () => {
@@ -99,7 +99,7 @@ function App() {
     getWeather(coordinates, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
-        setWeatherData(filterWeatherData(data));
+        setWeatherData(filteredData);
       })
       .catch(console.error);
     
