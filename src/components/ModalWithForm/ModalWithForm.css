@@ -32,7 +32,7 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: 20px;
-    border: 1px solid #000;
+    border: none;
 }
 
 .modal__content.modal__content_type_image {
