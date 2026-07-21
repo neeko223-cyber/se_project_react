@@ -7,7 +7,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     imageUrl: "",
     weather: "",
   };
-  const { values, handleChange, setValues } = useForm(defaultValues);
+  const { values, handleChange } = useForm(defaultValues);
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values);
@@ -24,6 +24,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           <label htmlFor="name" className="modal__label">
             Name{" "}
             <input
+              id="name"
               type="text"
               className="modal__input"
               name="name"
@@ -36,14 +37,15 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           <label htmlFor="imageUrl" className="modal__label">
             Image{" "}
             <input
+              id="imageUrl"
               type="url"
               className="modal__input"
               name="imageUrl"
               placeholder="Image URL"
               value={values.imageUrl}
               onChange={handleChange}
-             />
-      </label>
+            />
+          </label>
       
         <fieldset className="modal__radio-button">
           <legend className="modal__legend">Select the weather type:</legend>

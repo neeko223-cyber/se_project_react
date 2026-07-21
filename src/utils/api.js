@@ -1,7 +1,11 @@
 const baseUrl = "http://localhost:3001";
 
-const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+
+  return Promise.reject(`Error: ${res.status}`);
 };
 
 export const getItems = () => {
@@ -9,7 +13,7 @@ export const getItems = () => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
 
 export const addItem = ({ name, imageUrl, weather }, token) => {
@@ -24,17 +28,17 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
       imageUrl,
       weather,
     }),
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
 
-export const removeCard = (itemID, token) => {
-  return fetch(`${baseUrl}/items/${itemID}`, {
+export const removeCard = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
 
 export const addCardLike = (id, token) => {
@@ -44,7 +48,7 @@ export const addCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
 
 export const removeCardLike = (id, token) => {
@@ -54,5 +58,5 @@ export const removeCardLike = (id, token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(handleServerResponse);
+  }).then(checkResponse);
 };
