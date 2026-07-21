@@ -5,7 +5,7 @@
 
 .clothes-section__row {
     display: flex;
-    font-family: CabinetGRotesk, sans-serif;
+    font-family: CabinetGrotesk, Arial, sans-serif;
 }
 
 .clothes-section__items {
@@ -16,12 +16,7 @@
     list-style-type: none;
     gap: 21px;
     max-width: 1016px;
-    max-height: 676px;
     width: 100%;
-    height: 100%;
-    justify-content: space-between;
-    overflow: hidden;
-    
 }
 
 .clothes-section__your-items {
@@ -31,5 +26,14 @@
 
 .clothes-section__add-button {
     border: none;
+    background: none;
     opacity: 0.6;
+    cursor: pointer;
+    font-family: CabinetGrotesk, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.clothes-section__add-button:hover {
+    opacity: 1;
 }

@@ -1,12 +1,20 @@
+import { useContext } from "react";
 import "./ItemModal.css";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, onClose, card, onDelete }) {
+  const currentUser = useContext(CurrentUserContext);
+
   if (!card || !card._id) {
     return null;
   }
 
+  const isOwn =
+    currentUser &&
+    String(card.owner?._id || card.owner) === String(currentUser._id);
+
   return (
-    <div className={`modal ${activeModal === "preview" && "modal__opened"}`}>
+    <div className={`modal ${activeModal === "preview" ? "modal__opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
         <button
           type="button"
@@ -19,13 +27,15 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
             <h2 className="modal__caption">{card.name}</h2>
             <p className="modal__weather">Weather: {card.weather}</p>
           </div>
-          <button
-            type="button"
-            className="modal__delete-btn"
-            onClick={() => onDelete(card)}
-          >
-            Delete item
-          </button>
+          {isOwn && (
+            <button
+              type="button"
+              className="modal__delete-btn"
+              onClick={() => onDelete(card)}
+            >
+              Delete item
+            </button>
+          )}
         </div>
       </div>
     </div>

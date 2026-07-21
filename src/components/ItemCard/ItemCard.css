@@ -3,33 +3,68 @@
     position: relative;
     display: flex;
     justify-content: center;
-    font-family: CabinetGrotesk, sans-serif;
+    font-family: CabinetGrotesk, Arial, sans-serif;
+}
+
+.card__header {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
 }
 
 .card__name {
-    position: absolute;
-    top:15px;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
     font-weight: 700;
-    font-family: CabinetGrotesk, sans-serif;
+    font-family: CabinetGrotesk, Arial, sans-serif;
     line-height: 20px;
     background-color: #fff;
     border-radius: 4px;
     padding: 4px 8px;
-    width: 72px;
+    max-width: 200px;
     height: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card__like-button {
+    flex-shrink: 0;
+    width: 24px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='20' fill='none'%3E%3Cpath d='M12 19.5l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L12 19.5z' stroke='%23000' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.card__like-button:hover {
+    opacity: 1;
+}
+
+.card__like-button_active {
+    opacity: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='20' fill='none'%3E%3Cpath d='M12 19.5l-1.45-1.32C5.4 13.36 2 10.28 2 6.5 2 3.42 4.42 1 7.5 1c1.74 0 3.41.81 4.5 2.09C13.09 1.81 14.76 1 16.5 1 19.58 1 22 3.42 22 6.5c0 3.78-3.4 6.86-8.55 11.54L12 19.5z' fill='%23FF4D00' stroke='%23FF4D00' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
 .card__image {
     width: 100%;
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-.cards__text {
-    font-family: CabinetGrotesk, sans-serif;
+    cursor: pointer;
 }
