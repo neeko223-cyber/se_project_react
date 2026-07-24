@@ -1,6 +1,8 @@
 .clothes-section {
     display: flex;
     flex-grow: 1;
+    flex-direction: column;
+    padding-left: 20px;
 }
 
 .clothes-section__row {
