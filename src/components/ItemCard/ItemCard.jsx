@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import likeButton from "../../assets/like-button.svg";
+import likeButtonActive from "../../assets/like-button-active.svg";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
@@ -10,7 +12,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
   };
 
   const isLiked =
-    currentUser &&
+    Boolean(currentUser) &&
     Array.isArray(item.likes) &&
     item.likes.some(
       (id) => String(id?._id || id) === String(currentUser._id)
@@ -22,6 +24,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
 
   const handleLike = (e) => {
     e.stopPropagation();
+    if (!onCardLike) return;
     onCardLike({ id: item._id, isLiked });
   };
 
@@ -35,13 +38,19 @@ function ItemCard({ item, onCardClick, onCardLike }) {
             className={itemLikeButtonClassName}
             onClick={handleLike}
             aria-label={isLiked ? "Unlike item" : "Like item"}
-          />
+          >
+            <img
+              src={isLiked ? likeButtonActive : likeButton}
+              alt=""
+              className="card__like-button-icon"
+            />
+          </button>
         )}
       </div>
       <img
         onClick={handleCardClick}
         className="card__image"
-        src={item.imageUrl}
+        src={item.imageUrl || item.link}
         alt={item.name}
       />
     </li>

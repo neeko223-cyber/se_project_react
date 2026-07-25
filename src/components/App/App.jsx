@@ -15,6 +15,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getWeather } from "../../utils/weatherApi";
 import { apiKey } from "../../utils/constants";
@@ -132,14 +133,27 @@ function App() {
       });
   }
 
-  const handleDeleteItem = (card) => {
+  const handleDeleteClick = () => {
+    setActiveModal("confirm-delete");
+  };
+
+  const handleCancelDelete = () => {
+    setActiveModal("preview");
+  };
+
+  const handleDeleteItem = () => {
+    if (!selectedCard) return;
+
     const token = localStorage.getItem("jwt");
 
-    removeCard(card._id, token)
+    removeCard(selectedCard._id, token)
       .then(() => {
         setClothingItems((items) =>
-          items.filter((item) => item._id !== card._id)
+          items.filter(
+            (item) => String(item._id) !== String(selectedCard._id)
+          )
         );
+        setSelectedCard(null);
         closeActiveModal();
       })
       .catch((err) => {
@@ -306,7 +320,12 @@ function App() {
             activeModal={activeModal}
             card={selectedCard}
             onClose={closeActiveModal}
-            onDelete={handleDeleteItem}
+            onDeleteClick={handleDeleteClick}
+          />
+          <DeleteConfirmationModal
+            isOpen={activeModal === "confirm-delete"}
+            onClose={handleCancelDelete}
+            onConfirm={handleDeleteItem}
           />
           <RegisterModal
             isOpen={activeModal === "register"}
